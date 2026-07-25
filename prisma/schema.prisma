@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Run {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  runnerName String
+  distance   Float // Distância percorrida (ex: 5.2 km)
+  duration   Int // Duração em minutos (ex: 30)
+  pace       String // Ritmo médio (ex: "5:45 min/km")
+  comments   String? // Observações opcionais (por isso tem o "?")
+  createdAt  DateTime @default(now()) // Salva a data e hora do registro de forma automática
+
+  @@map("runs") // Define o nome da coleção lá no seu banco MongoDB Atlas
+}
