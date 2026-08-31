@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { ListRunService } from "../services/ListRunService.js";
+import { ListRunService } from "../services/ListRunService.js"
 
 class ListRunController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
