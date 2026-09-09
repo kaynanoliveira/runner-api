@@ -11,7 +11,7 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
     fastify.get("/runners", async (request: FastifyRequest, reply: FastifyReply) => {
         return new ListRunController().handle(request, reply)
     })
-    fastify.delete("/runner", async (request: FastifyRequest, reply: FastifyReply) => {
+    fastify.delete("/runner/:id", async (request: FastifyRequest, reply: FastifyReply) => {
         return new DeleteRunController().handle(request, reply)
     })
     fastify.put("/runner/:id", async (request: FastifyRequest, reply: FastifyReply) => {

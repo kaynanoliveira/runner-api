@@ -4,7 +4,7 @@ import { DeleteRunService } from "../services/DeleteRunService.js";
 
 class DeleteRunController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
-        // Pegando o id enviado via query na URL (ex: /run?id=65a...)
+        // Pegando o id enviado via parâmetro de rota (ex: /runner/6aa0d5bf...)
         const { id } = request.params as DeleteRunProps;
 
         const deleteRunService = new DeleteRunService()
