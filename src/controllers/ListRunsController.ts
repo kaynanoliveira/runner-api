@@ -1,12 +1,12 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { ListRunService } from "../services/ListRunService.js"
+import { ListRunsService } from "../services/ListRunsService.js"
 
-class ListRunController {
+class ListRunsController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
-        const listRunService = new ListRunService()
+        const listRunService = new ListRunsService()
         const runner = await listRunService.execute()
         reply.send(runner)
     }
 }
 
-export { ListRunController }
+export { ListRunsController }

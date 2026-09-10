@@ -1,6 +1,6 @@
 import prismaClient from "../prisma/index.js";
 
-class ListRunService {
+class ListRunsService {
     async execute() {
         const runner = await prismaClient.run.findMany()
         if (!runner) {
@@ -10,4 +10,4 @@ class ListRunService {
     }
 }
 
-export { ListRunService }
+export { ListRunsService }

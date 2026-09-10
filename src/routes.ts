@@ -1,20 +1,16 @@
 import { FastifyRequest, FastifyReply, FastifyPluginOptions, FastifyInstance } from "fastify";
-import { CreateRunController } from "./controller/CreateRunController.js";
-import { ListRunController } from "./controller/ListRunController.js";
-import { DeleteRunController } from "./controller/DeleteRunController.js";
-import { UpdateRunController } from "./controller/UpdateRunController.js";
+import { CreateRunController } from "./controllers/CreateRunController.js";
+import { ListRunsController } from "./controllers/ListRunsController.js";
+import { DeleteRunController } from "./controllers/DeleteRunController.js";
+import { UpdateRunController } from "./controllers/UpdateRunController.js";
 
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
-    fastify.post("/runner", async (request: FastifyRequest, reply: FastifyReply) => {
-        return new CreateRunController().handle(request, reply)
-    })
-    fastify.get("/runners", async (request: FastifyRequest, reply: FastifyReply) => {
-        return new ListRunController().handle(request, reply)
-    })
-    fastify.delete("/runner/:id", async (request: FastifyRequest, reply: FastifyReply) => {
-        return new DeleteRunController().handle(request, reply)
-    })
-    fastify.put("/runner/:id", async (request: FastifyRequest, reply: FastifyReply) => {
-        return new UpdateRunController().handle(request, reply)
-    })
+
+    fastify.post("/runner", (request: FastifyRequest, reply: FastifyReply) => new CreateRunController().handle(request, reply))
+
+    fastify.get("/runners", (request: FastifyRequest, reply: FastifyReply) => new ListRunsController().handle(request, reply))
+
+    fastify.delete("/runner/:id", (request: FastifyRequest, reply: FastifyReply) => new DeleteRunController().handle(request, reply))
+
+    fastify.put("/runner/:id", (request: FastifyRequest, reply: FastifyReply) => new UpdateRunController().handle(request, reply))
 }
